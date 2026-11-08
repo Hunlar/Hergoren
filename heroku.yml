@@ -1,6 +1,6 @@
 build:
-  languages:
-    - python
+  docker:
+    worker: Dockerfile
 
 run:
-  worker: python3 main.py
+  worker: python main.py
