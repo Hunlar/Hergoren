@@ -1,11 +1,10 @@
 tgcrypto
 asyncio
 ffmpeg-python
-py-tgcalls
-pyrogram
-youtube-search-python==1.4.9
-yt-dlp==2021.11.10.1
-git+https://github.com/ytdl-org/youtube-dl@master
+py-tgcalls==0.9.7
+pyrogram==2.0.106
+youtube-search-python==1.6.6
+yt-dlp
 youtube-search
 python-dotenv
 dnspython
