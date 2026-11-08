@@ -1,4 +1,5 @@
 import os
+import re
 from os import getenv
 from dotenv import load_dotenv
 
@@ -17,21 +18,36 @@ API_ID = getenv("API_ID")
 API_HASH = getenv("API_HASH")
 
 if not API_ID or not API_HASH or not BOT_TOKEN:
-    raise ValueError("API_ID, API_HASH ve BOT_TOKEN ayarlanmalıdır.")
+    raise ValueError(
+        "API_ID, API_HASH ve BOT_TOKEN ayarlanmalıdır."
+    )
 
 API_ID = int(API_ID)
 
 OWNER_NAME = getenv("OWNER_NAME", "dlwrml")
 ALIVE_NAME = getenv("ALIVE_NAME", "Levina")
-BOT_USERNAME = getenv("BOT_USERNAME", "veezvideobot").lstrip("@")
+
+BOT_USERNAME = getenv(
+    "BOT_USERNAME", "veezvideobot"
+).lstrip("@")
+
 ASSISTANT_NAME = getenv("ASSISTANT_NAME", "cleo_invida")
 
 GROUP_SUPPORT = getenv("GROUP_SUPPORT", "VeezSupportGroup")
 UPDATES_CHANNEL = getenv("UPDATES_CHANNEL", "levinachannel")
 
-SUDO_USERS = list(map(int, getenv("SUDO_USERS", "").split()))
+SUDO_USERS = [
+    int(user_id)
+    for user_id in re.split(
+        r"[\s,]+",
+        getenv("SUDO_USERS", "").strip()
+    )
+    if user_id
+]
 
-COMMAND_PREFIXES = getenv("COMMAND_PREFIXES", "/ ! .").split()
+COMMAND_PREFIXES = getenv(
+    "COMMAND_PREFIXES", "/ ! ."
+).split()
 
 ALIVE_IMG = getenv(
     "ALIVE_IMG",
@@ -45,7 +61,22 @@ UPSTREAM_REPO = getenv(
     "https://github.com/levina-lab/video-stream"
 )
 
-IMG_1 = getenv("IMG_1", "https://telegra.ph/file/d6f92c979ad96b2031cba.png")
-IMG_2 = getenv("IMG_2", "https://telegra.ph/file/6213d2673486beca02967.png")
-IMG_3 = getenv("IMG_3", "https://telegra.ph/file/f02efde766160d3ff52d6.png")
-IMG_4 = getenv("IMG_4", "https://telegra.ph/file/be5f551acb116292d15ec.png")
+IMG_1 = getenv(
+    "IMG_1",
+    "https://telegra.ph/file/d6f92c979ad96b2031cba.png"
+)
+
+IMG_2 = getenv(
+    "IMG_2",
+    "https://telegra.ph/file/6213d2673486beca02967.png"
+)
+
+IMG_3 = getenv(
+    "IMG_3",
+    "https://telegra.ph/file/f02efde766160d3ff52d6.png"
+)
+
+IMG_4 = getenv(
+    "IMG_4",
+    "https://telegra.ph/file/be5f551acb116292d15ec.png"
+)
